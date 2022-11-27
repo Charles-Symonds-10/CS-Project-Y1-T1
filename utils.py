@@ -39,11 +39,9 @@ def meannvalue(values):
     for x in values:
         num_of_values += 1
     total = sumvalues(values)
-    if type(total) is int:
-        mean_value = (total / num_of_values).__round__(4)
-        return mean_value
-    else:
-        return total
+    mean_value = round((total / num_of_values), 4)
+    return mean_value
+
 
 
 def countvalue(values, xw):
