@@ -105,17 +105,55 @@ What Function Would you like to Apply:
                 break
 
             elif choice == '2':
-                pass
+                daily_median_values = rep.daily_median(data, monitoring_station, pollutants[pollutant])
+                print(len(daily_median_values), daily_median_values)
+                input('Press Enter to Continue: ')
+                break
+
             elif choice == '3':
-                pass
+                hourly_average_values = rep.hourly_average(data, monitoring_station, pollutants[pollutant])
+                print(len(hourly_average_values), hourly_average_values)
+                input('Press Enter to Continue: ')
+                break
+
             elif choice == '4':
-                pass
+                monthly_average_values = rep.monthly_average(data, monitoring_station, pollutants[pollutant])
+                print(len(monthly_average_values), monthly_average_values)
+                input('Press Enter to Continue: ')
+                break
+
             elif choice == '5':
-                pass
+                while True:
+                    date = input('''
+Please Enter the Date you would like to have the peak hour for: ('YYYY-MM-DD'): ''')
+
+                    try:
+                        peak_hour_data_value = rep.peak_hour_date(data, date, monitoring_station, pollutants[pollutant])
+                        if peak_hour_data_value[2]:
+                            print(peak_hour_data_value[0:2])
+                            input('Press Enter to Continue: ')
+                            break
+                        else:
+                            input("That's Not a Valid Data please try again: ")
+                    except:
+                        input("That's Not a Valid Data please try again: ")
+                break
+
             elif choice == '6':
-                pass
+                total_missing_data = rep.count_missing_data(data, monitoring_station, pollutants[pollutant])
+                print(total_missing_data)
+                input('Press Enter to Continue: ')
+                break
+
             elif choice == '7':
-                pass
+                new_value = input('''
+Please enter your value to replace all 'No data' values with: (x.y, eg: 2.4): ''')
+
+                filled_missing_data = rep.fill_missing_data(data, new_value, monitoring_station, pollutants[pollutant])
+                print(filled_missing_data)
+                input('Press Enter to Continue: ')
+                break
+
             else:
                 input('''That's not one of the options: [Press Enter to Continue]: ''')
         else:
