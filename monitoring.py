@@ -1,4 +1,7 @@
-# This is a template. 
+import requests
+import datetime
+
+# This is a template.
 # You should modify the functions below to match
 # the signatures determined by the project specification.
 # 
@@ -8,7 +11,7 @@
 # You can access the API documentation here http://api.erg.ic.ac.uk/AirQuality/help
 #
 
-def get_live_data_from_api(site_code='MY1',species_code='NO',start_date=None,end_date=None):
+def get_live_data_from_api(site_code='MY1', species_code='NO', start_date=None, end_date=None):
     """
     Return data from the LondonAir API using its AirQuality API. 
     
@@ -17,8 +20,7 @@ def get_live_data_from_api(site_code='MY1',species_code='NO',start_date=None,end
     In order to use this function you first have to install the `requests` library.
     This code is provided as-is. 
     """
-    import requests
-    import datetime
+
     start_date = datetime.date.today() if start_date is None else start_date
     end_date = start_date + datetime.timedelta(days=1) if end_date is None else end_date
     
@@ -40,13 +42,16 @@ def rm_function_1(*args,**kwargs):
     """Your documentation goes here"""
     # Your code goes here
 
+
 def rm_function_2(*args,**kwargs):
     """Your documentation goes here"""
     # Your code goes here
 
+
 def rm_function_3(*args,**kwargs):
     """Your documentation goes here"""
     # Your code goes here
+
 
 def rm_function_4(*args,**kwargs):
     """Your documentation goes here"""

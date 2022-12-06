@@ -1,4 +1,5 @@
 import reporting as rep
+import intelligence as intel
 import pandas as pd
 
 
@@ -19,9 +20,9 @@ def main_menu():
             if choice == 'R':
                 reporting_menu()
             elif choice == 'I':
-                monitoring_menu()
-            elif choice == 'M':
                 intelligence_menu()
+            elif choice == 'M':
+                monitoring_menu()
             elif choice == 'A':
                 about()
             elif choice == 'Q':
@@ -167,7 +168,31 @@ def monitoring_menu():
 
 def intelligence_menu():
     """Your documentation goes here"""
-    pass
+    while True:
+        choice = input('''
+What Function would you like to perform: 
+(1) Find all of the Red pixels
+(2) Find all of the Cyan pixels
+(3) Detect the connected components
+(4) Detect the connected components sorted : ''')
+        print('\n' * 100)
+        if type(choice) is str:
+            if choice == '1':
+                intel.find_red_pixels()
+                break
+            elif choice == '2':
+                intel.find_cyan_pixels()
+                break
+            elif choice == '3':
+                pass
+                break
+            elif choice == '4':
+                pass
+                break
+            else:
+                input('''That's not one of the options: [Press Enter to Continue]: ''')
+        else:
+            input('''That's not one of the options: [Press Enter to Continue]: ''')
 
 
 def about():
