@@ -178,16 +178,17 @@ What Function would you like to perform:
         print('\n' * 100)
         if type(choice) is str:
             if choice == '1':
-                intel.find_red_pixels()
+                intel.find_red_pixels('map.png')
                 break
             elif choice == '2':
-                intel.find_cyan_pixels()
+                intel.find_cyan_pixels('map.png')
                 break
             elif choice == '3':
-                pass
+                intel.detect_connected_components()
                 break
             elif choice == '4':
-                pass
+                MARK = intel.detect_connected_components()
+                intel.detect_connected_components_sorted(MARK)
                 break
             else:
                 input('''That's not one of the options: [Press Enter to Continue]: ''')
