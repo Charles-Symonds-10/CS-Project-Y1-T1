@@ -1,5 +1,6 @@
 import reporting as rep
 import intelligence as intel
+import monitoring as mon
 import pandas as pd
 
 
@@ -161,11 +162,6 @@ Please enter your value to replace all 'No data' values with: (x.y, eg: 2.4): ''
             input('''That's not one of the options: [Press Enter to Continue]: ''')
 
 
-def monitoring_menu():
-    """Your documentation goes here"""
-    pass
-
-
 def intelligence_menu():
     """Your documentation goes here"""
     while True:
@@ -194,6 +190,58 @@ What Function would you like to perform:
                 input('''That's not one of the options: [Press Enter to Continue]: ''')
         else:
             input('''That's not one of the options: [Press Enter to Continue]: ''')
+
+
+def monitoring_menu():
+    """Your documentation goes here"""
+    while True:
+        choice = input('''
+What Function would you like to perform: 
+(1) Output all locations data is being Recorded
+(2) Output the details of a location
+(3) Output all the pollutant types
+(4) Output the details of a pollutant 
+(5) Output the site codes
+(6) Outputs locations that have recent data 
+(7) Output a graph of a recent day given Site code and Pollutant ''')
+        print('\n' * 100)
+        if type(choice) is str:
+            if choice == '1':
+                mon.get_all_site_locations()
+                break
+            elif choice == '2':
+                row = int(input('''
+Please Enter the row of the location that you would like to see: '''))
+                mon.get_description_of_location(row)
+                break
+            elif choice == '3':
+                mon.get_all_pollutant_types()
+                break
+            elif choice == '4':
+                row = int(input('''
+Please Enter the row of the location that you would like to see: '''))
+                mon.get_description_of_pollutant(row)
+                break
+            elif choice == '5':
+                mon.get_site_codes()
+                break
+            elif choice == '6':
+                pollutant = input('''
+Please Enter the pollutant that you would like to see: ''')
+                mon.find_data(species_code=pollutant)
+                break
+            elif choice == '7':
+                site_code = input('''
+Please Enter the Site Code of the place you would like to draw a graph (Recommend: 'BX1'):  ''')
+                species_code = input('''
+Please Enter the Species Code of the pollutant you would like to draw a graph (Recommend: 'NO2'): ''')
+                mon.create_graph_with_data(site_code, species_code)
+                break
+            else:
+                input('''That's not one of the options: [Press Enter to Continue]: ''')
+        else:
+            input('''That's not one of the options: [Press Enter to Continue]: ''')
+    print('\n' * 100)
 
 
 def about():
