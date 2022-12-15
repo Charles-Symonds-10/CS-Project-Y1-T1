@@ -1,3 +1,10 @@
 [
-  "test/test_reporting.py::test_daily_average"
+  "test/test_reporting.py::test_daily_average",
+  "test_intelligence.py::test_detect_connected_components",
+  "test_intelligence.py::test_detect_connected_components_sorted",
+  "test_intelligence.py::test_find_cyan_pixels",
+  "test_intelligence.py::test_find_red_pixels",
+  "test_utils.py::test_max_value",
+  "test_utils.py::test_min_value",
+  "test_utils.py::test_sum_values"
 ]

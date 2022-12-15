@@ -1,3 +1,4 @@
 {
-  "test/test_reporting.py::test_daily_average": true
+  "test/test_reporting.py::test_daily_average": true,
+  "test_intelligence.py": true
 }

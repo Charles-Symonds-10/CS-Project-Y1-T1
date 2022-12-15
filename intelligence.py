@@ -2,38 +2,42 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def find_red_pixels(map_filename, upper_threshold=100, lower_threshold=50):
+def find_red_pixels(map_filename='map.png', upper_threshold=100, lower_threshold=50):
     """Your documentation goes here"""
     image = plt.imread(f'data/{map_filename}')
     new_image = np.empty((image.shape[0], image.shape[1], 3), np.float)
+    array = np.zeros(shape=(image.shape[0], image.shape[1]))
 
     for x in range(image.shape[0]):
         for y in range(image.shape[1]):
             if image[x, y, 0] * 255 > upper_threshold and image[x, y, 1] * 255 < lower_threshold and image[x, y, 2] * 255 < lower_threshold:
                 new_image[x, y] = [1, 1, 1]
+                array[x, y] = 1
             else:
                 new_image[x, y] = [0, 0, 0]
 
     plt.imsave('data/map-red-pixels.jpg', new_image)
 
-    return new_image
+    return array
 
 
-def find_cyan_pixels(map_filename, upper_threshold=100, lower_threshold=50):
+def find_cyan_pixels(map_filename='map.png', upper_threshold=100, lower_threshold=50):
     """Your documentation goes here"""
     image = plt.imread(f'data/{map_filename}')
     new_image = np.empty((image.shape[0], image.shape[1], 3), np.float)
+    array = np.zeros(shape=(image.shape[0], image.shape[1]))
 
     for x in range(image.shape[0]):
         for y in range(image.shape[1]):
             if image[x, y, 0] * 255 < lower_threshold and image[x, y, 1] * 255 > upper_threshold and image[x, y, 2] * 255 > upper_threshold:
                 new_image[x, y] = [1, 1, 1]
+                array[x, y] = 1
             else:
                 new_image[x, y] = [0, 0, 0]
 
     plt.imsave('data/map-cyan-pixels.jpg', new_image)
 
-    return new_image
+    return array
 
 
 def detect_connected_components(img='data/map-red-pixels.jpg'):
@@ -111,10 +115,13 @@ def detect_connected_components_sorted(mark):
     f.close()
 
     new_image = np.empty((mark.shape[0], mark.shape[1], 3), dtype=np.float)
+    array = np.zeros((mark.shape[0], mark.shape[1]))
 
     for x in connected_components[0]:
         new_image[x[0], x[1]] = [1, 1, 1]
+        array[x[0], x[1]] = 1
     for x in connected_components[1]:
         new_image[x[0], x[1]] = [1, 1, 1]
 
     plt.imsave('data/cc-top-2.jpg', new_image)
+    return array

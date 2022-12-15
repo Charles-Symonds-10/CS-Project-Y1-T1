@@ -141,20 +141,27 @@ def create_scatter_graph(height=15, width=24):
 
 
 def create_graph_with_data(site_code, species_code):
-    data, max_value = get_data_of_certain_day(site_code=site_code, species_code=species_code)
-    graph = create_scatter_graph(width=(2 + len(data)))
+    try:
+        data, max_value = get_data_of_certain_day(site_code=site_code, species_code=species_code)
+        graph = create_scatter_graph(width=(2 + len(data)))
 
-    if max_value == -1000:
-        print('There are no value of data for this time and location')
-        input('Press Enter to Continue: ')
-    else:
-        for x in range(len(data)):
-            temp = int(round(float(data[x]), 0))
-            y_val = int(((temp * 13) // max_value) + 2)
-            graph[y_val][x + 2] = 'xx'
+        if max_value == -1000:
+            print('There are no value of data for this time and location')
+            input('Press Enter to Continue: ')
+        else:
+            for x in range(len(data)):
+                temp = int(round(float(data[x]), 0))
+                y_val = int(((temp * 13) // max_value) + 2)
+                graph[y_val][x + 2] = 'xx'
 
-    for x in range(len(graph) - 1, -1, -1):
-        print(' '.join(graph[x]))
+        print('\n' * 100)
+        for x in range(len(graph) - 1, -1, -1):
+            print(' '.join(graph[x]))
+        input('Press Enter to Continue')
+
+    except Exception:
+        print('There is no site that matches this inputs')
+        input('Press Enter to Continue')
 
 
 def find_data(species_code='NO2'):
